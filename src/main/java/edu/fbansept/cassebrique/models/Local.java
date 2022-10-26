@@ -1,3 +1,5 @@
+package edu.fbansept.cassebrique.models;
+
 public class Local implements Mensualisable{
 
     private int surface;

@@ -1,3 +1,5 @@
+package edu.fbansept.cassebrique.models;
+
 public class Employe implements Mensualisable{
 
     private int salaireAnnuel;

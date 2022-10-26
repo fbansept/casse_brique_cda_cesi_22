@@ -1,4 +1,6 @@
-package models;
+package edu.fbansept.cassebrique.models;
+
+import edu.fbansept.cassebrique.CasseBrique;
 
 import java.awt.*;
 
@@ -10,6 +12,8 @@ public class Balle {
     protected int vitesseVerticalBalle = 5;
     protected Color couleur;
     protected int largeur;
+
+    public final static Color COULEUR_PAR_DEFAUT = Color.RED;
 
     public Balle(int positionX, int positionY, Color couleur, int largeur) {
         this.positionX = positionX;
@@ -36,14 +40,14 @@ public class Balle {
         positionY += vitesseVerticalBalle;
     }
 
-    public void collision(int largeurEcran, int hauteurEcran){
+    public void collision(){
         //si la balle est arrivée à droite ou à gauche alors on inverse sa vitesse
-        if(positionX >= largeurEcran - largeur || positionX <= 0){
+        if(positionX >= CasseBrique.LARGEUR - largeur || positionX <= 0){
             vitesseHorizontalBalle *= -1; //vitesseHorizontalBalle = vitesseHorizontalBalle * -1
 //            couleur = new Color((float)Math.random(),(float)Math.random(),(float)Math.random());
         }
 
-        if(positionY >= hauteurEcran - largeur || positionY <= 0){
+        if(positionY >= CasseBrique.HAUTEUR - largeur || positionY <= 0){
             vitesseVerticalBalle *= -1;
         }
     }
