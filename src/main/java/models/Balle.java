@@ -18,6 +18,19 @@ public class Balle {
         this.largeur = largeur;
     }
 
+    public Balle(int positionX, int positionY, int largeur,  int vitesseHorizontalBalle, int vitesseVerticalBalle) {
+        this.positionX = positionX;
+        this.vitesseHorizontalBalle = vitesseHorizontalBalle == 0 ? 1 : vitesseHorizontalBalle;
+        this.positionY = positionY;
+        this.vitesseVerticalBalle = vitesseVerticalBalle == 0 ? 1 : vitesseVerticalBalle;
+        this.largeur = largeur;
+
+        this.couleur = new Color(
+                (float)Math.random(),
+                (float)Math.random(),
+                (float)Math.random());
+    }
+
     public void mouvement() {
         positionX += vitesseHorizontalBalle;
         positionY += vitesseVerticalBalle;

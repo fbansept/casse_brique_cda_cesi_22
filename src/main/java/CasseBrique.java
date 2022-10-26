@@ -43,16 +43,16 @@ public class CasseBrique extends Canvas {
             int largeurBalle = (int)(Math.random() * 40 + 10);
             int positionXdepart = (int)(Math.random() * (largeur - largeurBalle));
             int positionYdepart = (int)(Math.random() * (hauteur - largeurBalle));
-            Color couleur = new Color(
-                    (float)Math.random(),
-                    (float)Math.random(),
-                    (float)Math.random());
+
+            int vitesseHorizontal = (int)(Math.random() * 8 -4);
+            int vitesseVertical = (int)(Math.random() * 8 -4);
 
             tableauBalle[i] = new Balle(
                     positionXdepart,
                     positionYdepart,
-                    couleur,
-                    largeurBalle);
+                    largeurBalle,
+                    vitesseHorizontal,
+                    vitesseVertical);
         }
 
         while(true) {
