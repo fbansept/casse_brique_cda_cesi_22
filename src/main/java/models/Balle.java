@@ -27,6 +27,7 @@ public class Balle {
         //si la balle est arrivée à droite ou à gauche alors on inverse sa vitesse
         if(positionX >= largeurEcran - largeur || positionX <= 0){
             vitesseHorizontalBalle *= -1; //vitesseHorizontalBalle = vitesseHorizontalBalle * -1
+//            couleur = new Color((float)Math.random(),(float)Math.random(),(float)Math.random());
         }
 
         if(positionY >= hauteurEcran - largeur || positionY <= 0){
