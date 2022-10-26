@@ -36,19 +36,23 @@ public class CasseBrique extends Canvas {
 
     public void demarrer() throws InterruptedException {
 
-        Balle balle = new Balle();
+        Balle balle1 = new Balle(200, 200,Color.RED,50);
+        Balle balle2 = new Balle(100, 300,Color.BLUE,40);
 
         while(true) {
-
-            balle.mouvement();
-            balle.collision(largeur,hauteur);
 
             Graphics2D dessin = (Graphics2D) getBufferStrategy().getDrawGraphics();
 
             dessin.setColor(Color.WHITE);
             dessin.fillRect(0,0, largeur, hauteur);
 
-            balle.dessiner(dessin);
+            balle1.mouvement();
+            balle1.collision(largeur,hauteur);
+            balle1.dessiner(dessin);
+
+            balle2.mouvement();
+            balle2.collision(largeur,hauteur);
+            balle2.dessiner(dessin);
 
             //-----------------------------
             dessin.dispose();

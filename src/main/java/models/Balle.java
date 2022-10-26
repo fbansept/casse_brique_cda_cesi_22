@@ -8,6 +8,15 @@ public class Balle {
     protected int vitesseHorizontalBalle = 5;
     protected int positionY = 0;
     protected int vitesseVerticalBalle = 5;
+    protected Color couleur;
+    protected int largeur;
+
+    public Balle(int positionX, int positionY, Color couleur, int largeur) {
+        this.positionX = positionX;
+        this.positionY = positionY;
+        this.couleur = couleur;
+        this.largeur = largeur;
+    }
 
     public void mouvement() {
         positionX += vitesseHorizontalBalle;
@@ -16,18 +25,18 @@ public class Balle {
 
     public void collision(int largeurEcran, int hauteurEcran){
         //si la balle est arrivée à droite ou à gauche alors on inverse sa vitesse
-        if(positionX >= largeurEcran - 50 || positionX <= 0){
+        if(positionX >= largeurEcran - largeur || positionX <= 0){
             vitesseHorizontalBalle *= -1; //vitesseHorizontalBalle = vitesseHorizontalBalle * -1
         }
 
-        if(positionY >= hauteurEcran - 50 || positionY <= 0){
+        if(positionY >= hauteurEcran - largeur || positionY <= 0){
             vitesseVerticalBalle *= -1;
         }
     }
 
     public void dessiner(Graphics2D dessin) {
-        dessin.setColor(Color.RED);
-        dessin.fillOval(positionX,positionY, 50,50);
+        dessin.setColor(couleur);
+        dessin.fillOval(positionX,positionY, largeur,largeur);
     }
 
     public int getPositionX() {
