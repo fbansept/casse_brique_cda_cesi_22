@@ -9,6 +9,8 @@ public class CasseBrique extends Canvas {
     public final static int LARGEUR = 500;
     public final static int HAUTEUR = 600;
 
+    protected Balle[] tableauBalle = new Balle[10];
+
     public CasseBrique() throws InterruptedException {
         JFrame fenetre = new JFrame("Casse brique");
         //On récupère le panneau de la fenetre principale
@@ -36,25 +38,29 @@ public class CasseBrique extends Canvas {
 
     public void demarrer() throws InterruptedException {
 
+        tableauBalle[0] = new Balle(
+                220,
+                400,Color.RED,
+                50,
+                5,
+                -5);
 
-        Balle[] tableauBalle = new Balle[100];
-
-        for (int i = 0; i < tableauBalle.length; i ++){
-
-            int largeurBalle = (int)(Math.random() * 40 + 10);
-            int positionXdepart = (int)(Math.random() * (LARGEUR - largeurBalle));
-            int positionYdepart = (int)(Math.random() * (HAUTEUR - largeurBalle));
-
-            int vitesseHorizontal = (int)(Math.random() * 8 -4);
-            int vitesseVertical = (int)(Math.random() * 8 -4);
-
-            tableauBalle[i] = new Balle(
-                    positionXdepart,
-                    positionYdepart,
-                    largeurBalle,
-                    vitesseHorizontal,
-                    vitesseVertical);
-        }
+//        for (int i = 0; i < tableauBalle.length; i ++){
+//
+//            int largeurBalle = (int)(Math.random() * 40 + 10);
+//            int positionXdepart = (int)(Math.random() * (LARGEUR - largeurBalle));
+//            int positionYdepart = (int)(Math.random() * (HAUTEUR - largeurBalle));
+//
+//            int vitesseHorizontal = (int)(Math.random() * 8 -4);
+//            int vitesseVertical = (int)(Math.random() * 8 -4);
+//
+//            tableauBalle[i] = new Balle(
+//                    positionXdepart,
+//                    positionYdepart,
+//                    largeurBalle,
+//                    vitesseHorizontal,
+//                    vitesseVertical);
+//        }
 
         while(true) {
 
@@ -64,12 +70,12 @@ public class CasseBrique extends Canvas {
             dessin.fillRect(0,0, LARGEUR, HAUTEUR);
 
             for(Balle balle : tableauBalle) {
-                balle.mouvement();
-                balle.collision();
-                balle.dessiner(dessin);
+                if(balle != null) {
+                    balle.mouvement();
+                    balle.collision();
+                    balle.dessiner(dessin);
+                }
             }
-
-
 
             //-----------------------------
             dessin.dispose();
@@ -78,12 +84,7 @@ public class CasseBrique extends Canvas {
         }
     }
 
-
-
     public static void main(String[] args) throws InterruptedException {
-
-        int total = HAUTEUR + LARGEUR;
-
         new CasseBrique();
     }
 }
